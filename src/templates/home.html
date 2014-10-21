@@ -1,0 +1,84 @@
+$def with(username)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>VManager</title>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../static/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../static/dialog.js"></script>
+<style type="text/css">
+<!--
+.STYLE1 {
+	font-size: 24px;
+	font-weight: bold;
+}
+.STYLE2 {
+	font-size: 18px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+<body>
+<div class="header">
+	<div class="logo">VManager</div>
+        <div id="username"><span  style="cursor:pointer;">$username<img src="../static/images/user_select.gif" /></span>
+        <div class="org_box">
+   		 <span class="org_bot_cor"></span>
+    		<a href="/chguser/$username" style="font-size:14px">Change password</a>
+            <a href="/logout" style="font-size:14px">Sign out</a>
+            <a href="/usermg" style="font-size:14px">UserManage</a>
+		</div>
+        </div>
+        <div class="header_user"><img src="../static/images/user_img.gif" /></div>
+</div>
+<div class="main">
+	<div class="left">
+    	<span class="tspan">MAIN MENU</span>
+        <a href="/home">
+        	<img src="../static/images/home.png" />
+            <p>Home</p>
+        </a>
+        <a href="/host">
+        	<img src="../static/images/host.png" />
+            <p>Host</p>
+        </a>
+        <span class="tspan">OPERATION</span>
+        <a href="/view">
+        	<img src="../static/images/view.png" />
+            <p>View Container</p>
+        </a>
+        <a href="/new">
+        	<img src="../static/images/add.png" />
+            <p>New Container</p>
+        </a>
+        <a href="/del">
+        	<img src="../static/images/del.png" />
+            <p>Delete Container</p>
+        </a>
+        <a href="/manage">
+        	<img src="../static/images/manage.png" />
+            <p>Manage Container</p>
+        </a>
+		<a href="/logout">
+        	<img src="../static/images/exit.png" />
+            <p>Exit VManager</p>
+        </a>
+	</div>
+	<div class="right">
+    	<div class="welcom_home">Welcome to VManager! $username</div>
+        <div class="home_bg"></div>
+	  <div>
+			<p><span class="STYLE1">VManager</span> version 0.1</p>
+			<p class="STYLE2">Credits:</p>
+			<p>WangXingjun (wongxingjun@126.com) </p>
+			<p class="STYLE2">Techonogy Surpport  : </p>
+			<p>LXC, libvirt, web.py framework</p>
+			<p class="STYLE2">Copyright&copy;WangXingjun. All Rights Reserved.</p>
+	  </div>
+	</div>
+</div><div class="footer"> Copyright <span style=" font-family:Arial, Helvetica, sans-serif;">&copy; </span>WangXingjun. All Rights Reserved.
+</div>
+</body>
+</html>

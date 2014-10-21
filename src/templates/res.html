@@ -1,0 +1,135 @@
+$def with(post,username)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>VManager</title>
+<link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../static/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="../static/dialog.js"></script>
+<script type="text/javascript">
+			     function change_range(rangeId,numId){
+				     var value = document.getElementById(rangeId).value ;
+                     document.getElementById(numId).value = value;
+                 }
+				 function change_box(rangeId,numId){
+				     var value = document.getElementById(numId).value ;
+                     document.getElementById(rangeId).value = value;
+                 }
+				 function change_net(){
+				     var nettype = document.getElementById('nettype').value;
+                     var netlink = document.getElementById('netlink');
+					 if(nettype=="default"){
+					     netlink.value="default";
+						 netlink.readonly="readonly";						 
+					     }
+					 else{
+						 }
+                 }		 
+</script>	
+</head>
+
+<body>
+<div class="header">
+	<div class="logo">VManager</div>
+        <div id="username"><span  style="cursor:pointer;">$username<img src="../static/images/user_select.gif" /></span>
+        <div class="org_box">
+   		 <span class="org_bot_cor"></span>
+    		<a href="/chguser/$username" style="font-size:14px">Change password</a>
+            <a href="/logout" style="font-size:14px">Sign out</a>
+		</div>
+        </div>
+        <div class="header_user"><img src="../static/images/user_img.gif" /></div>
+</div>
+<div class="main">
+	<div class="left">
+    	<span class="tspan">MAIN MENU</span>
+        <a href="/home">
+        	<img src="../static/images/home.png" />
+            <p>Home</p>
+        </a>
+        <a href="/host">
+        	<img src="../static/images/host.png" />
+            <p>Host</p>
+        </a>
+        <span class="tspan">OPERATION</span>
+        <a href="/view">
+        	<img src="../static/images/view.png" />
+            <p>View Container</p>
+        </a>
+        <a href="/new">
+        	<img src="../static/images/add.png" />
+            <p>New Container</p>
+        </a>
+        <a href="/del">
+        	<img src="../static/images/del.png" />
+            <p>Delete Container</p>
+        </a>
+        <a href="/manage">
+        	<img src="../static/images/manage.png" />
+            <p>Manage Container</p>
+        </a>
+		<a href="/logout">
+        	<img src="../static/images/exit.png" />
+            <p>Exit VManager</p>
+        </a>
+	</div>
+
+	<div class="right">
+    	<span class="tspan">Resurces Limit</span>
+      <form method="POST" name="settings" onkeydown="if(event.keyCode==13){return false;}">
+      <div class="ldiv">
+		    <span class="nspan">Name:</span><span>$post["name"]</span>
+	  </div>
+	  <div class="ldiv">
+	        <span class="nspan">Max Memory:</span>
+			<input   class="in" id="maxMemR"  type="range" min="100" max="3000" 
+			              value=$post["maxMem"]  onchange="change_range('maxMemR','maxMemB')"/>
+			<input id="maxMemB" name="maxMem" type="number"  value=$post["maxMem"]  min="100" max="3000" style="width:60px" class="in"
+			              onchange="change_box('maxMemR','maxMemB')" />
+			<span>MB</span>
+	  </div>
+	  <div class="ldiv">
+	        <span class="nspan">Hard Limit:</span>
+			<input   class="in" id="hdrMemR"  type="range" min="100" max="3000" 
+			              value=$post["hard_limit"]  onchange="change_range('hdrMemR','hdrMemB')"/>
+			<input id="hdrMemB" name="hdrMem" type="number"  value=$post["hard_limit"]  min="100" max="3000" style="width:60px" class="in"
+			              onchange="change_box('hdrMemR','hdrMemB')" />
+			<span>MB</span>
+	  </div>
+	  <div class="ldiv">
+	        <span class="nspan">Soft Limit:</span>
+			<input   class="in" id="sfMemR"  type="range" min="100" max="3000" 
+			              value=$post["soft_limit"]  onchange="change_range('sfMemR','sfMemB')"/>
+			<input id="sfMemB" name="sfMem" type="number"  value=$post["soft_limit"]  min="100" max="3000" style="width:60px" class="in"
+			              onchange="change_box('sfMemR','sfMemB')" />
+			<span>MB</span>
+	  </div>
+	  <div class="ldiv">
+	        <span class="nspan">Swap Limit:</span>
+			<input   class="in" id="spMemR"  type="range" min="100" max="3000" 
+			              value=$post["swap_hard_limit"]  onchange="change_range('spMemR','spMemB')"/>
+			<input id="spMemB" name="spMem" type="number"  value=$post["swap_hard_limit"]  min="100" max="3000" style="width:60px" class="in"
+			              onchange="change_box('spMemR','spMemB')" />
+			<span>MB</span>
+			<span>(No less than hard_limit)</span>
+	  </div>
+	  <div class="ldiv">
+		    <span class="nspan">vCPUs:</span><input  type="text" id="cpus" name="cpus" class="in" value=$post["vcpu"] />
+			<span>(e.g 0~3)</span>		
+	  </div>
+	  <div class="ldiv">
+		    <span class="nspan">CPU Shares:</span><input  type="text" id="cpushares" name="cpushares" 
+		                       class="in" value=$post["cpu_shares"] />
+			<span>(e.g 16~1024)</span>	
+	  </div>
+	  <div class="ldiv">
+		    <button type="submit" name="apply" id="submit" class="btn" onclick="settings.submit()">OK</button>
+		    <button type="submit" name="cancel" id="cancel" class="btn">Cancel</button>	
+	  </div>
+	  </form>
+  </div> 
+</div><div class="footer"> Copyright <span style=" font-family:Arial, Helvetica, sans-serif;">&copy; </span>WangXingjun. All Rights Reserved.
+</div>
+</body>
+</html>

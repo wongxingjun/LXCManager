@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<domain type="lxc">
+<name>lxc1</name>
+<memory>512000</memory>
+<currentMemory>204800</currentMemory>
+<memtune>
+<hard_limit>409600</hard_limit>
+<soft_limit>307200</soft_limit>
+<swap_hard_limit>409600</swap_hard_limit>
+</memtune>
+<vcpu>2</vcpu>
+<cputune>
+<shares>800</shares>
+</cputune>
+<os>
+<type>exe</type>
+<init>/bin/sh</init>
+</os>
+<clock offset="utc"/>
+<on_poweroff>destroy</on_poweroff>
+<on_reboot>restart</on_reboot>
+<on_crash>destroy</on_crash>
+<devices>
+<console type="pty"/>
+<emulator>/usr/lib/libvirt/libvirt_lxc</emulator>
+<interface type="network">
+<source network="default"/>
+</interface>
+</devices>
+</domain>
