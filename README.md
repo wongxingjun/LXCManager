@@ -11,4 +11,4 @@ You can download it for personal non-commercial use.
 - MySQL-5.6
 
 ##Tips:
-This system is a simple system to manage LXCs in a server. I ran it successfully on my PC with Ubuntu12.04(Recommanded). Due to some bugs in LXC(v1.0.0-alpha) and uncomplete suportting provided by libvirt towards LXC, some advanced functions are not implemented perfectly, such as vCPU number limit and memory limit.
+This system is a simple system to manage LXCs in a server. I ran it successfully on my PC with Ubuntu 12.04(Recommanded). Due to some bugs in LXC(v1.0.0-alpha) and uncomplete suportting provided by libvirt towards LXC, some advanced functions are not implemented perfectly, such as vCPU number limit and memory limit.
