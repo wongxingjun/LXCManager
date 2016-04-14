@@ -1,8 +1,9 @@
 VManager
 ========
+
 ##Introduction
-A simple `LXC`(Linux Container) managing system implemented with Python.
-You can download it for personal non-commercial use.
+A simple `LXC`(Linux Container) management system implemented with Python.You can download it for personal non-commercial use.
+
 ##Environment requirements:
 - [LXC-1.0.0-alpha](https://www.linuxcontainers.org)
 - [libvirt-0.9.8](http://libvirt.org)
@@ -12,3 +13,7 @@ You can download it for personal non-commercial use.
 
 ##Tips:
 This is a simple system to manage LXCs in a server. I ran it successfully on my PC with Ubuntu 12.04. Due to some bugs in LXC(v1.0.0-alpha) and uncomplete suportting provided by libvirt towards LXC, some advanced functions are not implemented perfectly, such as vCPU number limit and memory limit.
+
+##TODOs:
+This system is just a demo and a more advanced one will come soon.
+
